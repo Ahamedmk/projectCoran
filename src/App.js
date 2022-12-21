@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+
 import './App.css';
+import'../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Presentation from './presentation/Presentation';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import Recap from './Pages/Recap/Recap';
+import Sidebar from './Components/NewCharts/Sidebar/Sidebar';
+import {Routes, Route} from 'react-router-dom';
+import ThemeContextProvider from './Context/ThemeContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <div className="App">
+      {/* <Dashboard /> */}
+      <ThemeContextProvider>
+        <Sidebar />  
+      <Routes> 
+      
+        <Route path="/" element={<Presentation />} />
+        <Route path="/recap" element={<Recap />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        
+     </Routes> 
+     </ThemeContextProvider>
+     </div>
   );
 }
 
