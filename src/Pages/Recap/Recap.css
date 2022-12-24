@@ -1,10 +1,12 @@
 .CircularProgressbar {
-    width: 10%;
+    max-width: 35%;
 }
 .progression {
     display: flex;
     justify-content: center;
     text-align: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 p {
@@ -12,4 +14,19 @@ p {
     justify-content: center;
     text-align: center;
     align-items: center;
+}
+
+.hadithToday{
+   
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 5px;
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    box-shadow: 10px 10px 21px -5px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 21px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 21px -5px rgba(0,0,0,0.75);
+}
+.hadithToday h3 {
+    margin-bottom: 0px;
 }

@@ -13,7 +13,7 @@ const ThemeContextProvider = props => {
    
 
     return (
-        <ThemeContext.Provider value={{theme, numberPage, changePage}}>
+        <ThemeContext.Provider value={{theme, numberPage, changePage, setNumberPage}}>
             {props.children}
         </ThemeContext.Provider>
     )
