@@ -1,6 +1,6 @@
 // import React from 'react'
 // import { useState, useContext } from 'react'
- import './Dashboard.css'
+//  import './Dashboard.css'
 // import BarCharts from '../../Components/NewCharts/BarCharts'
 
 import {
@@ -45,5 +45,5 @@ export default function Dashboard() {
        </Doughnut>
       </div>
     </div>
-  );
-};
+  )
+}

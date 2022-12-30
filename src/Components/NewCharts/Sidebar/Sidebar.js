@@ -6,7 +6,7 @@ export default function Sidebar() {
   return (
     <nav className='sidenav'>
       <NavLink to="/"
-      className={({isActive}) => isActive ? "activeLink" : ""}
+      className={({isActive}) => isActive ? "" : ""}
       >Présentation</NavLink>
       <NavLink to="/recap"
        className={({isActive}) => isActive ? "activeLink" : ""}
