@@ -1,5 +1,12 @@
+/* *{
+  color: white;
+ background: black;
+} */
+
 .App {
   text-align: center;
+  /* background-image: url('./assets/moon.jpg');
+  color: white; */
 }
 
 .App-logo {

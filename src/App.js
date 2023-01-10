@@ -7,10 +7,11 @@ import Recap from './Pages/Recap/Recap';
 import Sidebar from './Components/NewCharts/Sidebar/Sidebar';
 import {Routes, Route} from 'react-router-dom';
 import ThemeContextProvider from './Context/ThemeContext';
+import Status from './Pages/Status/Status';
 
 function App() {
   return (
-     <div className="App">
+     <div className="App" >
       {/* <Dashboard /> */}
       <ThemeContextProvider>
         <Sidebar />  
@@ -18,7 +19,7 @@ function App() {
       
         <Route path="/" element={<Presentation />} />
         <Route path="/recap" element={<Recap />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/status" element={<Status />} />
         
      </Routes> 
      </ThemeContextProvider>

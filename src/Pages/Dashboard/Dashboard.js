@@ -1,4 +1,7 @@
  import React from 'react'
+ import { useState, useEffect, useContext } from 'react'
+ import { ThemeContext } from '../../Context/ThemeContext';
+ import {Link, NavLink} from 'react-router-dom';
 // import { useState, useContext } from 'react'
 //  import './Dashboard.css'
 // import BarCharts from '../../Components/NewCharts/BarCharts'
@@ -55,12 +58,18 @@ ChartJS.register(
 // };
 
 export default function Dashboard() {
+  const {numberPage} = useContext(ThemeContext)
+  const [ajout, setAjout] = useState()
+
+  const copieNumberPage = [...numberPage];
+  console.log(copieNumberPage)
+
     const data = {
-      labels: ['Mon', 'Tue', 'Wed', 'jeu', 'ven', 'sam', 'dim'],
+      labels: ['Mon', 'Tue', 'Wed', 'jeu', 'ven', 'sam', 'dim', 'Mon', 'Tue', 'Wed', 'jeu', 'ven', 'sam', 'dim', 'Mon', 'Tue', 'Wed', 'jeu', 'ven', 'sam', 'dim',],
       datasets: [
         {
           label: 'nbres de page lu par jour',
-          data: [3, 6, 9, 15,18, 2,4],
+          data: [],
           backgroundColor:'rgba(53, 162, 235, 0.5)',
           borderColor: 'black',
           borderWidth: 1,
@@ -75,7 +84,20 @@ export default function Dashboard() {
         // }
       ]
     }
-console.log(data.datasets[0].data)
+    const donne = data.datasets[0].data ;
+//     const teston = donne.concat(copieNumberPage);
+//     console.log(donne)
+//     donne.push(teston)
+//     console.log(donne.flat(2))
+//     donne = donne.flat(2)
+//     console.log(donne)
+// console.log(teston)
+const test = copieNumberPage.map(x => donne.push(x))
+console.log(donne)
+console.log(test)
+// const copie = copieNumberPage.pop();
+// donne.push(copie);
+// console.log(copieNumberPage.pop())
     const options = {
 
     }
@@ -85,7 +107,7 @@ console.log(data.datasets[0].data)
       <h1>Statistique de lecture</h1>
      <div
       style = {
-        {padding: '20px',
+        {padding: '10px',
         width: '100%'}
       }
      >

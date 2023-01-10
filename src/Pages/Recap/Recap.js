@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { ThemeContext } from '../../Context/ThemeContext';
+import {Link, NavLink} from 'react-router-dom';
 import Dashboard from '../Dashboard/Dashboard';
 
 import './Recap.css'
@@ -19,7 +20,7 @@ export default function Recap() {
   
   const percentage = Math.trunc ((total* 100)/604);
   return (
-    <div>
+    <div className="m-auto px-4 col-12 col-sm-10 col-lg-6">
       
       <h1>J'ai lu en tout :  {total} pages </h1>
       
@@ -47,6 +48,14 @@ export default function Recap() {
   « Le Messager de Dieu (‘alayhi salat wa salam) a dit : « Celui qui récite une lettre du Livre de Dieu aura une bonne action qui sera décuplée. Je ne dis pas que « Alif, Lam, Mim », est une lettre mais « Alif », est une lettre, « Lam » est une lettre et « Mim » est une lettre. »
   </p>
 </div>
+<div className="suivSecond">
+<button className='preSecond'>
+          <NavLink to="/">Précédent </NavLink>
+          </button>
+          <button className='svtSecond'>
+          <NavLink to="/status">Suivant </NavLink>
+          </button>
+        </div>
 
    
     </div>

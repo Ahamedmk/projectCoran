@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect, useContext } from 'react'
+import { NavLink } from 'react-router-dom';
 import { ThemeContext } from '../Context/ThemeContext';
 // import {v4 as uuidv4} from 'uuid';
 import './Presentation.css'
@@ -13,6 +14,7 @@ export default function Presentation() {
     const [users, setUsers] = useState([]);
     const [tester, setTester] = useState([]);
     const [surah, setSurah] = useState([]);
+    const [diag, setDiag] = useState([]);
 
     const laDate = new Date()
     const dateDay = laDate.getDate()
@@ -37,8 +39,10 @@ export default function Presentation() {
 
   //------------------- les versets au début de chaque pages-----------------------------
   //  projet
-  const total = numberPage.reduce((a,b) => a + b,0);
-  console.log(total)
+  // const total = () => {numberPage.reduce((a,b) => a + b,0);} 
+   const total = numberPage.reduce((a,b) => a + b,0);
+  // console.log(total)
+  console.log(numberPage)
   const getApiDoto = async () => {
      const response = await fetch(
        "http://api.alquran.cloud/v1/meta"
@@ -64,6 +68,7 @@ export default function Presentation() {
     getApiDoto();
  },[]);
  const versetAyahs = tester[total];
+
 //  const sourates = surah[(versetAya.surah) - 1];
 //  console.log(versetAyahs.surah)
  console.log(versetAyahs);
@@ -119,9 +124,14 @@ verset()
   
 
   const changeValue = (e) => {
-     setNumberPage([...numberPage,Number(e)]); 
+     setDiag(Number(e)); 
   }
-
+console.log(diag)
+  const envoi = e => {
+    e.preventDefault();
+    setNumberPage([...numberPage, diag])
+    console.log (numberPage);
+  }
   // useEffect(() =>{
     
   //       localStorage.setItem('items', JSON.stringify(numberPage));
@@ -143,7 +153,7 @@ verset()
         <form className='mb-3' >
         Choisissez le nombre de page lu aujourd'hui :
           <select onChange={e => changeValue(e.target.value)} id="page" >
-            <option value = "0">0</option>
+            {/* <option value = "0">0</option> */}
             <option value = "1" >1</option>
             <option value = "2">2</option>
             <option value = "3">3</option>
@@ -182,7 +192,7 @@ verset()
           <div className="sourate">
            <div className="firstSourate">
            <div className='session'>
-            Ma prochaine page sera la page : <strong>{total+ 1}</strong> 
+             Ma prochaine page sera la page : <strong>{total+ 1}</strong>  
             <br />
             de la sourate : <strong>{souratesFirst.englishName}</strong>
           <br />
@@ -209,8 +219,8 @@ verset()
 
             </div>
           </div>
-           <div className="button d-flex  justify-content-center">  
-          <button className='ms-3 btn btn-success  '>
+           <div className="button d-flex  justify-content-center" >  
+          <button className='ms-3 btn btn-success' onClick={e => envoi(e)}>
             valider
           </button>
           </div>
@@ -218,6 +228,11 @@ verset()
         
 
         </form>
+        <div className="suivFirst">
+          <button className='svtFirst'>
+          <NavLink to="/recap">Suivant </NavLink>
+          </button>
+        </div>
       
     </div>
   )

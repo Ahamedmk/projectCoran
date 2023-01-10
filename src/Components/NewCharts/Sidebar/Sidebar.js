@@ -7,10 +7,14 @@ import {Link, NavLink} from 'react-router-dom';
 
 export default function Sidebar() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleLien, setToggleLien] = useState(true);
   const [largeur, setLargeur] = useState(window.innerWidth);
 
   const toggleNav = () => {
     setToggleMenu(!toggleMenu)
+  }
+  const toggleDirection = () => {
+    setToggleLien(!toggleLien)
   }
  
   useEffect(() => {
@@ -31,14 +35,14 @@ export default function Sidebar() {
       {(toggleMenu || largeur > 500) && (
       <ul className='menuList'>
       <li className='items'><NavLink to="/"
-      className={({isActive}) => isActive ? "" : ""}
+      className={({isActive}) => isActive ? "" : ""} onClick={toggleNav}
       >Présentation</NavLink></li>
       <li className='items'><NavLink to="/recap"
-       className={({isActive}) => isActive ? "activeLink" : ""}
+       className={({isActive}) => isActive ? "activeLink" : ""} onClick={toggleNav}
       >Récapitulatif</NavLink></li>
-      <li className='items'><NavLink to="/dashboard"
-       className={({isActive}) => isActive ? "activeLink" : ""}
-      >Dashboard</NavLink></li>
+      <li className='items' ><NavLink to="/status"
+       className={({isActive}) => isActive ? "activeLink" : ""} onClick={toggleNav}
+      >Status</NavLink></li>
       </ul>
       )}
       <button onClick={toggleNav}><img className='burger' src={imgBurger} alt="" /></button>

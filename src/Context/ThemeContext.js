@@ -11,7 +11,7 @@ const ThemeContextProvider = props => {
     const initiale = JSON.parse ( sauve );
      return initiale || "";});
      
-    useEffect(() =>{
+     useEffect(() =>{
         localStorage.setItem('items', JSON.stringify(numberPage));
     }, [numberPage]);
     
@@ -19,7 +19,6 @@ const ThemeContextProvider = props => {
         setNumberPage(el.target.value)
     }
    
-
     return (
         <ThemeContext.Provider value={{theme, numberPage, changePage, setNumberPage}}>
             {props.children}
