@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect, useContext } from 'react'
 import { NavLink } from 'react-router-dom';
 import { ThemeContext } from '../Context/ThemeContext';
+import Calendary from './Calendar/Calendary';
 // import {v4 as uuidv4} from 'uuid';
 import './Presentation.css'
 
@@ -14,7 +15,7 @@ export default function Presentation() {
     const [users, setUsers] = useState([]);
     const [tester, setTester] = useState([]);
     const [surah, setSurah] = useState([]);
-    const [diag, setDiag] = useState([]);
+    const [diag, setDiag] = useState(0);
 
     const laDate = new Date()
     const dateDay = laDate.getDate()
@@ -30,7 +31,7 @@ export default function Presentation() {
      setUsers(response.data);
     
    };
-    //  console.log (users);
+   
 
   useEffect(() => {
     getApiData();
@@ -41,7 +42,7 @@ export default function Presentation() {
   //  projet
   // const total = () => {numberPage.reduce((a,b) => a + b,0);} 
    const total = numberPage.reduce((a,b) => a + b,0);
-  // console.log(total)
+  
   console.log(numberPage)
   const getApiDoto = async () => {
      const response = await fetch(
@@ -50,7 +51,7 @@ export default function Presentation() {
      const result = response.data;
       const page = result.pages;
       const pages = page.references;
-    //  const pagesTot = pages[total];
+  
      const surah = result.surahs;
      const surahs = surah.references;
       console.log(result)
@@ -58,19 +59,16 @@ export default function Presentation() {
     setSurah(surahs);  
      
    };
-  //  console.log(tester);
-  //  console.log(surah);
+ 
   
 
    
-  //  console.log(tester);
+  
    useEffect(() => {
     getApiDoto();
  },[]);
  const versetAyahs = tester[total];
 
-//  const sourates = surah[(versetAya.surah) - 1];
-//  console.log(versetAyahs.surah)
  console.log(versetAyahs);
   const versetAya = {...versetAyahs};
  console.log(versetAya.surah);
@@ -90,38 +88,6 @@ export default function Presentation() {
    console.log(tabSurah);
  }
 verset()
-//  console.log(versetAya(hs);
-   // setSurah(versetAyahs);
-//  console.log(surah);
-//  const versetAyah =versetAyahs;
-//  console.log(versetAyah)
-// -------------------------------------------------------------
-  
-          // const nameSurah = tester.surah;
-          // console.log(nameSurah);
-        //  const nbreVerset = tester.references[total].ayah; 
-      //  console.log(nameSurah);
-          // const nameSurahTotal = surah.references[nameSurah - 1].englishName;
-          //  console.log(`ma prochaine page sera la page ${total+ 1} de la sourate ${nameSurahTotal} verset ${nbreVerset}`);
-    
-  //  console.log(testaz.references)
-
-  
- 
-
-  // const options = {
-  //   method: 'GET',
-  //   headers: {
-  //     'X-RapidAPI-Key': 'b969c368d3mshea5764361ad2523p118c58jsn25fbc64c99a9',
-  //     'X-RapidAPI-Host': 'al-quran1.p.rapidapi.com'
-  //   }
-  // };
-  
-  // fetch('https://al-quran1.p.rapidapi.com/1-114', options)
-  //   .then(response => response.json())
-  //   .then(response => console.log(response))
-  //   .catch(err => console.error(err));
-  
 
   const changeValue = (e) => {
      setDiag(Number(e)); 
@@ -132,14 +98,20 @@ console.log(diag)
     setNumberPage([...numberPage, diag])
     console.log (numberPage);
   }
-  // useEffect(() =>{
-    
-  //       localStorage.setItem('items', JSON.stringify(numberPage));
-  //   }, [numberPage]);
+ 
  
   return (
     <div className="m-auto px-4 col-12 col-sm-10 col-lg-6">
-        <h2>{dateDay}/{leMois+1}/{annee}</h2>
+
+      {/* < Calendary /> */}
+      
+      {/* page de presentation du logo */}
+      {/* <div className="img">
+      <img src = {imgMk} alt="" className='imgMk' />
+      </div> */}
+
+
+          <h2>{dateDay}/{leMois+1}/{annee}</h2>
         <div className="objectif">
           <h2>Terminer la lecture du coran 1 fois par mois</h2>
           
@@ -153,7 +125,7 @@ console.log(diag)
         <form className='mb-3' >
         Choisissez le nombre de page lu aujourd'hui :
           <select onChange={e => changeValue(e.target.value)} id="page" >
-            {/* <option value = "0">0</option> */}
+           <option value = "0">0</option> 
             <option value = "1" >1</option>
             <option value = "2">2</option>
             <option value = "3">3</option>
@@ -185,10 +157,7 @@ console.log(diag)
             <option value = "29">29</option>
             <option value = "30">30</option>
           </select>
-          {/* <div className='versetSuivant d-flex flex-column align-items-center'> 
-         <div className="pageSuivante"> Ma prochaine page sera la page : <strong className='nombre'>{total+ 1}</strong> </div>  */}
-         {/* <div className="sourateSuivante"> Sourate {nameSurahTotal} verset : <strong className='nombre'>{nbreVerset}</strong> </div> */}
-           
+          
           <div className="sourate">
            <div className="firstSourate">
            <div className='session'>
@@ -199,24 +168,6 @@ console.log(diag)
           A partir du verset : <strong>{versetAya.ayah}</strong>
           
            </div>
-           
-           {/* De la sourate : 
-           <select>
-                {users.map((item, index) => { 
-              return <option value={index} key={index} >{item.englishName}</option>
-            })}   
-           </select>
-            </div> 
-            <div className="endSourate">
-                A la sourate :
-                <select>
-                  {users.map((item, index) => {
-             
-              return <option value={index} key={index} >{item.englishName}</option>
-            })}    
-                </select> */}
-                
-
             </div>
           </div>
            <div className="button d-flex  justify-content-center" >  
@@ -224,16 +175,14 @@ console.log(diag)
             valider
           </button>
           </div>
-          {/* </div> */}
-        
-
+          
         </form>
         <div className="suivFirst">
           <button className='svtFirst'>
           <NavLink to="/recap">Suivant </NavLink>
           </button>
-        </div>
-      
+        </div> 
+       
     </div>
   )
 }

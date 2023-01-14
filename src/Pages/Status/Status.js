@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
-import Dashboard from '../Dashboard/Dashboard'
+import Dashboard from '../Dashboard/Dashboard.js'
 import { NavLink } from 'react-router-dom';
-import imgMk from '../../assets/mk.jpg'
+
 import './Status.css'
 
 export default function Status() {
@@ -19,7 +19,7 @@ export default function Status() {
           </p>
         </div>
       </div>
-      < Dashboard />
+     
       <div className="suivThird">
           <button className='preThird'>
           <NavLink to="/recap">Précédent </NavLink>

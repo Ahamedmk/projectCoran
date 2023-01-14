@@ -37,6 +37,13 @@ h3 {
     border-radius: 5px;
     background-color: transparent;
 }
+
+
+.loader {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
 /* .pageSuivante{
     padding: 20px; 
 } */

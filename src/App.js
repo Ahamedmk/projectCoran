@@ -1,18 +1,36 @@
-
+import { useState, useEffect } from 'react'
 import './App.css';
 import'../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Presentation from './presentation/Presentation';
-import Dashboard from './Pages/Dashboard/Dashboard';
+// import Dashboard from './Pages/Dashboard/Dashboard';
 import Recap from './Pages/Recap/Recap';
 import Sidebar from './Components/NewCharts/Sidebar/Sidebar';
 import {Routes, Route} from 'react-router-dom';
 import ThemeContextProvider from './Context/ThemeContext';
 import Status from './Pages/Status/Status';
+import Loader from './presentation/Loader/Loader.js';
 
 function App() {
-  return (
+
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+     setLoader(false);
+    }, 2000)
+   }, [])
+ 
+  return loader ?
+
+  (
+  <div>
+  {/* <Sidebar /> */}
+    <Loader />
+    </div>
+  ) : (
+
      <div className="App" >
-      {/* <Dashboard /> */}
+      {/* Loader /> */}
       <ThemeContextProvider>
         <Sidebar />  
       <Routes> 
